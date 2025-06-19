@@ -6,9 +6,14 @@ Microservicio para gestión de comprobantes de compra (receipts) con endpoints C
 
 ## 🚀 Comandos principales
 
+> **Requiere Encore CLI** ([Instrucciones oficiales](https://encore.dev/docs/ts/install))
+
 ```bash
 # Instalar dependencias
 npm install
+
+# Generar el cliente de Prisma
+npx prisma generate
 
 # Ejecutar migraciones Prisma
 npx prisma migrate deploy
@@ -18,7 +23,35 @@ npm run seed
 
 # Iniciar el microservicio Encore (modo desarrollo)
 encore run
+
+# Ejecutar los tests de integración (Vitest)
+npm test
 ```
+
+---
+
+## 🧪 Pruebas automáticas (Vitest)
+
+Ejecuta todos los tests de integración:
+
+```bash
+npm test
+```
+
+Ejemplo de salida esperada:
+```
+Receipts API (e2e)
+  ✓ POST /receipts - debe registrar un comprobante
+  ✓ GET /receipts - debe listar comprobantes
+  ✓ PATCH /receipts/:id/status - debe actualizar el estado
+  ✓ GET /receipts/export/csv - debe exportar CSV
+  ✓ POST /ai/query - debe responder con AI
+
+Test Files  1 passed (1)
+      Tests  5 passed (5)
+```
+
+Los tests requieren que el microservicio esté corriendo en `http://127.0.0.1:4000`.
 
 ---
 
@@ -30,13 +63,14 @@ encore run
 - Prisma: **^6.10.1**
 - PostgreSQL: **13+**
 - OpenAI SDK: **^5.5.1**
+- Vitest: **^3.2.4**
 
 ---
 
 ## 📚 Endpoints disponibles
 
 ### 1. Registrar comprobante
-- **POST** `/receipts`
+- **POST** `/receipts` (See <attachments> above for file contents. You may not need to search or read the file again.)
 - **Body JSON:**
 ```json
 {
@@ -53,7 +87,7 @@ encore run
 ---
 
 ### 2. Listar comprobantes (con filtros, paginación y orden)
-- **GET** `/receipts`
+- **GET** `/receipts` (See <attachments> above for file contents. You may not need to search or read the file again.)
 - **Query params opcionales:**
   - `page` (número de página)
   - `limit` (resultados por página)
@@ -69,7 +103,7 @@ GET /receipts?page=1&limit=10&status=validated
 ---
 
 ### 3. Actualizar estado de comprobante
-- **PATCH** `/receipts/:id/status`
+- **PATCH** `/receipts/:id/status` (See <attachments> above for file contents. You may not need to search or read the file again.)
 - **Body JSON:**
 ```json
 {
@@ -81,14 +115,14 @@ GET /receipts?page=1&limit=10&status=validated
 ---
 
 ### 4. Exportar comprobantes a CSV
-- **GET** `/receipts/export/csv`
+- **GET** `/receipts/export/csv` (See <attachments> above for file contents. You may not need to search or read the file again.)
 - **Query params opcionales:** mismos que `/receipts`
 - **Respuesta:** Archivo CSV (o string CSV en local).
 
 ---
 
 ### 5. Analítica AI sobre comprobantes
-- **POST** `/ai/query`
+- **POST** `/ai/query` (See <attachments> above for file contents. You may not need to search or read the file again.)
 - **Body JSON:**
 ```json
 {
