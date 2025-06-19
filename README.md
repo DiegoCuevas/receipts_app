@@ -10,16 +10,16 @@ Microservicio para gestión de comprobantes de compra (receipts) con endpoints C
 
 ```bash
 # Instalar Encore CLI (solo una vez por máquina)
-npm install -g encore.dev
+brew install encoredev/tap/encore
 
 # Instalar dependencias
 npm install
 
-# Generar el cliente de Prisma
-npx prisma generate
-
 # Ejecutar migraciones Prisma
 npx prisma migrate deploy
+
+# Generar el cliente de Prisma
+npx prisma generate
 
 # Correr el seed (carga datos de prueba)
 npm run seed
@@ -29,6 +29,15 @@ encore run
 
 # Ejecutar los tests de integración (Vitest)
 npm test
+```
+
+---
+
+## ⚙️ Variables de entorno
+Crea un archivo `.env` con:
+```
+DATABASE_URL=postgresql://usuario:contraseña@localhost:5432/qompa_test
+OPENAI_API_KEY=sk-xxxxxx
 ```
 
 ---
@@ -140,15 +149,6 @@ GET /receipts?page=1&limit=10&status=validated
 - Node.js 18+
 - PostgreSQL
 - Clave API de OpenAI (para endpoint AI)
-
----
-
-## ⚙️ Variables de entorno
-Crea un archivo `.env` con:
-```
-DATABASE_URL=postgresql://usuario:contraseña@localhost:5432/tu_db
-OPENAI_API_KEY=sk-xxxxxx
-```
 
 ---
 
