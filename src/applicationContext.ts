@@ -1,11 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { CatsService } from './cats/cats.service';
-import { CatsModule } from './cats/cats.module';
 import { ReceiptsService } from './receipts/receipts.service';
 import { ReceiptsModule } from './receipts/receipts.module';
+
 export interface ApplicationContext {
-  catsService: CatsService;
   receiptsService: ReceiptsService;
 }
 
@@ -14,7 +12,6 @@ export interface ApplicationContext {
 const applicationContext: Promise<ApplicationContext> =
   NestFactory.createApplicationContext(AppModule).then((app) => {
     return {
-      catsService: app.select(CatsModule).get(CatsService, { strict: true }),
       receiptsService: app.select(ReceiptsModule).get(ReceiptsService, { strict: true }),
     };
   });

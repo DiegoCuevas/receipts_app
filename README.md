@@ -9,6 +9,9 @@ Microservicio para gestión de comprobantes de compra (receipts) con endpoints C
 > **Requiere Encore CLI** ([Instrucciones oficiales](https://encore.dev/docs/ts/install))
 
 ```bash
+# Instalar Encore CLI (solo una vez por máquina)
+npm install -g encore.dev
+
 # Instalar dependencias
 npm install
 
@@ -70,7 +73,7 @@ Los tests requieren que el microservicio esté corriendo en `http://127.0.0.1:40
 ## 📚 Endpoints disponibles
 
 ### 1. Registrar comprobante
-- **POST** `/receipts` (See <attachments> above for file contents. You may not need to search or read the file again.)
+- **POST** `/receipts`
 - **Body JSON:**
 ```json
 {
@@ -87,7 +90,7 @@ Los tests requieren que el microservicio esté corriendo en `http://127.0.0.1:40
 ---
 
 ### 2. Listar comprobantes (con filtros, paginación y orden)
-- **GET** `/receipts` (See <attachments> above for file contents. You may not need to search or read the file again.)
+- **GET** `/receipts`
 - **Query params opcionales:**
   - `page` (número de página)
   - `limit` (resultados por página)
@@ -103,7 +106,7 @@ GET /receipts?page=1&limit=10&status=validated
 ---
 
 ### 3. Actualizar estado de comprobante
-- **PATCH** `/receipts/:id/status` (See <attachments> above for file contents. You may not need to search or read the file again.)
+- **PATCH** `/receipts/:id/status`
 - **Body JSON:**
 ```json
 {
@@ -115,14 +118,14 @@ GET /receipts?page=1&limit=10&status=validated
 ---
 
 ### 4. Exportar comprobantes a CSV
-- **GET** `/receipts/export/csv` (See <attachments> above for file contents. You may not need to search or read the file again.)
+- **GET** `/receipts/export/csv`
 - **Query params opcionales:** mismos que `/receipts`
 - **Respuesta:** Archivo CSV (o string CSV en local).
 
 ---
 
 ### 5. Analítica AI sobre comprobantes
-- **POST** `/ai/query` (See <attachments> above for file contents. You may not need to search or read the file again.)
+- **POST** `/ai/query`
 - **Body JSON:**
 ```json
 {
