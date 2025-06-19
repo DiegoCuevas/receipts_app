@@ -1,7 +1,7 @@
 export interface ReceiptListQuery {
   page?: number;
   limit?: number;
-  issueDate?: string; // formato ISO
+  issueDate?: string;
   documentType?: string;
   status?: string;
 }

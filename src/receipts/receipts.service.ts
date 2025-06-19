@@ -13,7 +13,6 @@ export class ReceiptDto {
   documentType!: string;
 }
 
-// Servicio para listar comprobantes con filtros y paginación
 export interface FindAllReceiptsParams {
   filters: {
     issueDate?: Date;
@@ -76,7 +75,7 @@ export class ReceiptsService {
     if (!validStatuses.includes(status)) {
       throw new BadRequestException('Estado inválido');
     }
-    // Verificar si el recibo existe antes de actualizar
+
     const existing = await prisma.receipt.findUnique({ where: { id } });
     if (!existing) {
       throw new BadRequestException('No se encontró el recibo con el ID proporcionado');

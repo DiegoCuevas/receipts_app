@@ -8,9 +8,9 @@ export interface ReceiptResponseDto {
     amount: number;
     igv: number;
     total: number;
-    issueDate: string;    // ISO string
+    issueDate: string;
     documentType: string;
     status: 'pending' | 'validated' | 'rejected' | 'observed';
-    createdAt: string;    // ISO string
+    createdAt: string;
   };
 }
